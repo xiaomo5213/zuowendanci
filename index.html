@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>真题作文高频词 · 零基础考前突击</title>
+<style>
+:root{
+  --mint:#1fb89a; --mint-d:#129276; --mint-l:#e8f7f3; --mint-ll:#f4fbf9;
+  --ink:#22303a; --ink2:#5b6b76; --ink3:#93a2ac;
+  --line:#e3ece9; --bg:#f6faf9; --card:#ffffff;
+  --red:#e5484d; --green:#17914c; --amber:#e9a13b;
+  --shadow:0 2px 10px rgba(31,184,154,.10);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Helvetica Neue",sans-serif;
+  background:var(--bg); color:var(--ink); font-size:15px; line-height:1.6;
+  padding-bottom:74px;
+}
+.wrap{max-width:720px;margin:0 auto;padding:0 14px}
+header{background:linear-gradient(135deg,#1fb89a,#0f9d86);color:#fff;padding:16px 0 18px;border-radius:0 0 18px 18px;box-shadow:var(--shadow)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:10px}
+h1{font-size:17px;margin:0;font-weight:700;letter-spacing:.5px}
+.sub{font-size:12px;opacity:.9;margin-top:3px}
+.hd-prog{text-align:right;font-size:12px;opacity:.95;line-height:1.5}
+.hd-prog b{font-size:17px;font-weight:700}
+
+nav{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);display:flex;z-index:50;padding-bottom:env(safe-area-inset-bottom)}
+nav button{flex:1;border:0;background:none;padding:8px 2px 7px;font-size:11px;color:var(--ink3);font-family:inherit;cursor:pointer}
+nav button .ic{display:block;font-size:19px;line-height:1.2}
+nav button.on{color:var(--mint-d);font-weight:700}
+nav button.on .ic{transform:translateY(-1px)}
+
+.panel{display:none;padding-top:14px}
+.panel.on{display:block;animation:fade .22s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:14px;margin-bottom:12px}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.chip{border:1px solid var(--line);background:#fff;color:var(--ink2);border-radius:999px;padding:5px 12px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.chip.on{background:var(--mint);border-color:var(--mint);color:#fff;font-weight:700}
+.btn{border:0;background:var(--mint);color:#fff;border-radius:10px;padding:9px 16px;font-size:14px;font-family:inherit;cursor:pointer;font-weight:600}
+.btn:active{background:var(--mint-d)}
+.btn.ghost{background:#fff;color:var(--mint-d);border:1px solid var(--mint);font-weight:600}
+.btn.gray{background:#eef3f2;color:var(--ink2)}
+.btn:disabled{opacity:.45}
+.muted{color:var(--ink2);font-size:13px}
+.tiny{color:var(--ink3);font-size:12px}
+hr{border:0;border-top:1px dashed var(--line);margin:12px 0}
+
+/* 单词卡 */
+.flip{perspective:1200px;margin-bottom:12px}
+.flip-in{position:relative;transition:transform .5s cubic-bezier(.4,.2,.2,1);transform-style:preserve-3d;min-height:290px}
+.flip.on .flip-in{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:20px 16px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.face.back{transform:rotateY(180deg);justify-content:flex-start;text-align:left;align-items:stretch;overflow-y:auto}
+.bigw{font-size:38px;font-weight:800;letter-spacing:.5px;word-break:break-all;line-height:1.2}
+.pos{display:inline-block;margin-top:8px;font-size:12px;color:var(--mint-d);background:var(--mint-l);border-radius:6px;padding:2px 8px}
+.freq{margin-top:10px;font-size:12px;color:var(--ink3)}
+.hint{margin-top:16px;font-size:12.5px;color:var(--ink3)}
+.mn{font-size:19px;font-weight:700;color:var(--mint-d);margin:2px 0 10px}
+.ex{background:var(--mint-ll);border-left:3px solid var(--mint);border-radius:8px;padding:9px 11px;font-size:14px;margin-bottom:6px}
+.ex .en{font-style:italic}
+.ex .cn{color:var(--ink2);font-size:13px;margin-top:3px}
+.speak{border:1px solid var(--mint);background:var(--mint-l);color:var(--mint-d);border-radius:999px;padding:4px 12px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px;vertical-align:1px}
+
+/* 练习 */
+.qword{font-size:30px;font-weight:800;text-align:center;margin:6px 0 2px;word-break:break-all}
+.qcn{font-size:20px;font-weight:700;text-align:center;color:var(--ink);margin:6px 0 2px}
+.opts{display:grid;gap:9px;margin-top:14px}
+.opt{background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;font-size:15px;cursor:pointer;text-align:left;font-family:inherit;color:var(--ink);transition:.15s}
+.opt:hover{border-color:var(--mint)}
+.opt.right{border-color:var(--green);background:#eaf7ee;color:var(--green);font-weight:700}
+.opt.wrong{border-color:var(--red);background:#fdecec;color:var(--red)}
+.opt.dim{opacity:.5}
+.opt small{color:var(--ink3);margin-right:6px;font-weight:700}
+input.txt{width:100%;border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;font-size:16px;font-family:inherit;outline:none;background:#fff;color:var(--ink)}
+input.txt:focus{border-color:var(--mint)}
+.fb{border-radius:10px;padding:10px 12px;font-size:13.5px;margin-top:12px;display:none}
+.fb.ok{display:block;background:#eaf7ee;color:var(--green);border:1px solid #bfe6cb}
+.fb.no{display:block;background:#fdecec;color:var(--red);border:1px solid #f3c4c5}
+.fb .kw{font-weight:800}
+.progbar{height:7px;background:#e6efed;border-radius:99px;overflow:hidden;margin:10px 0 4px}
+.progbar i{display:block;height:100%;background:linear-gradient(90deg,#1fb89a,#0f9d86);transition:width .3s}
+.blank{display:inline-block;min-width:74px;border-bottom:2px solid var(--mint);text-align:center;color:var(--mint-d);font-weight:800}
+
+/* 列表 */
+.list{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin-top:10px}
+.item{border:1px solid var(--line);border-radius:10px;padding:8px 10px;background:#fff;cursor:pointer}
+.item b{font-size:15px}
+.item span{display:block;font-size:12.5px;color:var(--ink2)}
+.item.m{border-color:#bfe6cb;background:#f2fbf5}
+.item.w{border-color:#f3c4c5;background:#fdf3f3}
+.item.m b::after{content:" ✓";color:var(--green);font-size:12px}
+.item.w b::after{content:" ✗";color:var(--red);font-size:12px}
+.cat-t{font-size:13px;font-weight:800;color:var(--mint-d);margin:14px 0 2px;display:flex;justify-content:space-between}
+
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+td,th{border-bottom:1px solid var(--line);padding:7px 4px;text-align:left}
+th{color:var(--ink3);font-weight:600;font-size:12.5px}
+.n{text-align:right;font-variant-numeric:tabular-nums}
+.stat{display:flex;gap:8px;text-align:center}
+.stat div{flex:1;background:var(--mint-ll);border-radius:12px;padding:10px 4px}
+.stat b{display:block;font-size:20px;color:var(--mint-d)}
+.stat span{font-size:11.5px;color:var(--ink2)}
+.sent{border:1px solid var(--line);border-radius:12px;padding:11px 12px;margin-bottom:9px;background:#fff}
+.sent .e{font-weight:700;font-size:15px}
+.sent .c{color:var(--ink2);font-size:13px;margin-top:3px}
+.sent .t{font-size:11.5px;color:var(--ink3);margin-top:5px}
+.tpl{background:#fffaf0;border:1px dashed #e9c98a;border-radius:12px;padding:12px;font-size:14px;white-space:pre-wrap;line-height:1.9}
+.toast{position:fixed;left:50%;bottom:86px;transform:translateX(-50%);background:rgba(34,48,58,.92);color:#fff;padding:9px 16px;border-radius:999px;font-size:13px;z-index:99;opacity:0;pointer-events:none;transition:.25s}
+.toast.on{opacity:1}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div>
+      <h1>真题作文高频词 · 突击</h1>
+      <div class="sub">2013.10 – 2026.4 共 30 篇真题范文 · 词频真实统计</div>
+    </div>
+    <div class="hd-prog">
+      <div>掌握 <b id="hpM">0</b>/<span id="hpAll">0</span></div>
+      <div id="hpPct">0%</div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- ============ 学习 ============ -->
+  <section class="panel on" id="p-learn">
+    <div class="card">
+      <div class="row">
+        <button class="chip on" data-cat="all">全部</button>
+        <button class="chip" data-cat="骨">万能骨架词</button>
+        <button class="chip" data-cat="动">高频动词</button>
+        <button class="chip" data-cat="名">主题名词</button>
+        <button class="chip" data-cat="形">形容词</button>
+        <button class="chip" data-cat="连">连接/逻辑</button>
+      </div>
+      <hr>
+      <div class="row">
+        <span class="tiny">范围：</span>
+        <button class="chip on" data-scope="unlearned">优先未掌握</button>
+        <button class="chip" data-scope="all">顺序全部</button>
+        <button class="chip" data-scope="wrong">只复习错词</button>
+      </div>
+    </div>
+
+    <div class="flip" id="flip">
+      <div class="flip-in">
+        <div class="face">
+          <div class="freq" id="fIdx">1 / 20</div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center">
+            <div class="bigw" id="fW">word</div>
+            <div><span class="pos" id="fC">词性</span></div>
+            <div class="freq" id="fF">真题出现 0 次</div>
+          </div>
+          <div class="row" style="justify-content:center">
+            <button class="speak" onclick="speak(cur.w)">🔊 发音</button>
+            <button class="speak" onclick="speak(cur.e)">🔊 例句</button>
+          </div>
+          <div class="hint">点击卡片翻面看释义 · 或用下方按钮标记</div>
+        </div>
+        <div class="face back">
+          <div class="row" style="justify-content:space-between">
+            <span class="tiny" id="bIdx">1 / 20</span>
+            <button class="speak" onclick="speak(cur.e)">🔊 朗读例句</button>
+          </div>
+          <div class="bigw" style="font-size:26px;margin:6px 0" id="bW">word</div>
+          <div class="mn" id="bM">释义</div>
+          <div class="ex"><div class="en" id="bE"></div><div class="cn" id="bEc"></div></div>
+          <div class="tiny" id="bF"></div>
+          <div style="flex:1"></div>
+          <div class="row" style="justify-content:center">
+            <button class="btn gray" onclick="mark(0)">😵 不认识</button>
+            <button class="btn" onclick="mark(1)">🙂 认识了</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" style="justify-content:center;margin-bottom:14px">
+      <button class="btn ghost" onclick="flipIt()">翻面 (空格)</button>
+      <button class="btn ghost" onclick="prevCard()">← 上一个</button>
+      <button class="btn" onclick="nextCard()">下一个 →</button>
+    </div>
+    <div class="card"><div class="tiny" id="learnTip"></div></div>
+  </section>
+
+  <!-- ============ 练习 ============ -->
+  <section class="panel" id="p-quiz">
+    <div class="card" id="setup">
+      <div class="cat-t"><span>选择题型</span></div>
+      <div class="row">
+        <button class="chip on" data-qm="mix">混合</button>
+        <button class="chip" data-qm="e2c">英 → 中</button>
+        <button class="chip" data-qm="c2e">中 → 英</button>
+        <button class="chip" data-qm="fill">例句填空</button>
+        <button class="chip" data-qm="dict">听音写词</button>
+      </div>
+      <hr>
+      <div class="cat-t"><span>题目数量</span></div>
+      <div class="row">
+        <button class="chip" data-qn="10">10 题</button>
+        <button class="chip on" data-qn="20">20 题</button>
+        <button class="chip" data-qn="30">30 题</button>
+        <button class="chip" data-qn="0">全部</button>
+      </div>
+      <hr>
+      <div class="row" style="justify-content:space-between">
+        <label class="muted"><input type="checkbox" id="autoSpeak" checked> 出题时自动朗读</label>
+        <button class="btn" onclick="startQuiz()">开始练习</button>
+      </div>
+      <div class="tiny" style="margin-top:8px">系统会自动多考你不熟的词，答对升级、答错退回错词本。</div>
+    </div>
+
+    <div id="qbox" style="display:none">
+      <div class="card">
+        <div class="row" style="justify-content:space-between">
+          <span class="tiny" id="qMode">题型</span>
+          <span class="tiny" id="qIdx">1 / 20</span>
+        </div>
+        <div class="progbar"><i id="qBar" style="width:0"></i></div>
+        <div id="qBody" style="margin-top:10px"></div>
+        <div class="fb" id="qFb"></div>
+        <div class="row" id="qNext" style="justify-content:center;margin-top:12px;display:none">
+          <button class="btn" onclick="nextQ()">下一题 →</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" id="qEnd" style="display:none">
+      <h3 style="margin:0 0 6px">本轮完成 🎉</h3>
+      <div class="stat" style="margin:10px 0">
+        <div><b id="eRight">0</b><span>答对</span></div>
+        <div><b id="eWrong">0</b><span>答错</span></div>
+        <div><b id="eAcc">0%</b><span>正确率</span></div>
+      </div>
+      <div class="tiny" id="eTip"></div>
+      <div class="row" style="margin-top:12px">
+        <button class="btn" onclick="startQuiz()">再来一轮</button>
+        <button class="btn ghost" onclick="go('quiz')">换个题型</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 词表 ============ -->
+  <section class="panel" id="p-list">
+    <div class="card">
+      <div class="row">
+        <button class="chip on" data-lf="all">全部</button>
+        <button class="chip" data-lf="mastered">已掌握</button>
+        <button class="chip" data-lf="un">未掌握</button>
+        <button class="chip" data-lf="wrong">错词本</button>
+      </div>
+      <div class="tiny" style="margin-top:8px">点单词可发音，长按/再次点击无操作。按真题出现次数从高到低排列。</div>
+    </div>
+    <div id="listBox"></div>
+  </section>
+
+  <!-- ============ 句型 ============ -->
+  <section class="panel" id="p-sent">
+    <div class="card">
+      <div class="cat-t"><span>万能句型（背下就能套 30 篇真题）</span></div>
+      <div id="sentBox"></div>
+    </div>
+    <div class="card">
+      <div class="cat-t"><span>万能模板：直接填空套用</span></div>
+      <div class="tpl">It is well known that <b>主题词</b> is very important in our lives.
+As a matter of fact, <b>主题词</b> is good for us in many ways.
+Some people like A, some people like B. As for me, I prefer <b>A</b>. Here are the reasons.
+
+First of all, <b>理由一</b>.
+In addition, <b>理由二</b>.
+Last but not least, <b>理由三</b>.
+
+As a result, as far as I am concerned, <b>重申观点</b>.</div>
+      <div class="tiny" style="margin-top:8px">提示：主题词填进第一句后，全文结构不变，只换理由三句话。零基础同学先把这套骨架背熟，考场上换词即可成文。</div>
+      <div class="row" style="margin-top:10px"><button class="btn ghost" onclick="speak(document.querySelector('.tpl').innerText.replace(/<[^>]+>/g,'').replace(/主题词|理由一|理由二|理由三|重申观点/g,'something'))">🔊 朗读模板</button></div>
+    </div>
+  </section>
+
+  <!-- ============ 统计 ============ -->
+  <section class="panel" id="p-stat">
+    <div class="card">
+      <div class="stat">
+        <div><b id="sLearn">0</b><span>已学过</span></div>
+        <div><b id="sMaster">0</b><span>已掌握</span></div>
+        <div><b id="sWrong">0</b><span>错词</span></div>
+        <div><b id="sNew">0</b><span>未学</span></div>
+      </div>
+      <div class="progbar" style="margin-top:14px"><i id="sBar" style="width:0"></i></div>
+      <div class="tiny">掌握 = 连续答对升级到第 3 级，共 5 级。</div>
+    </div>
+    <div class="card">
+      <div class="cat-t"><span>分类进度</span></div>
+      <table id="catTable"></table>
+    </div>
+    <div class="card">
+      <div class="row">
+        <button class="btn gray" onclick="resetBox()">清空掌握进度</button>
+        <button class="btn gray" onclick="resetWrong()">清空错词本</button>
+      </div>
+      <div class="tiny" style="margin-top:8px">进度保存在本机浏览器，换设备不会同步。</div>
+    </div>
+  </section>
+
+</div>
+
+<nav>
+  <button class="on" data-go="learn"><span class="ic">📖</span>学习</button>
+  <button data-go="quiz"><span class="ic">✏️</span>练习</button>
+  <button data-go="list"><span class="ic">📋</span>词表</button>
+  <button data-go="sent"><span class="ic">🧩</span>句型</button>
+  <button data-go="stat"><span class="ic">📊</span>统计</button>
+</nav>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ========== 词库：全部来自 2013.10-2026.4 真题范文真实词频 ========== */
+const WORDS=[
+{w:"important",m:"重要的",c:"骨",e:"It is well known that working is very important in our lives.",ec:"众所周知，工作在生活中非常重要。",f:18},
+{w:"well-known",m:"众所周知的",c:"骨",e:"It is well known that water is very important in our lives.",ec:"众所周知，水在我们的生活中非常重要。",f:12},
+{w:"fact",m:"事实",c:"骨",e:"As a matter of fact, we can hardly live without work.",ec:"事实上，我们几乎离不开工作。",f:9},
+{w:"matter",m:"事情；要紧",c:"骨",e:"As a matter of fact, book is good for us in many ways.",ec:"事实上，书在很多方面对我们有好处。",f:10},
+{w:"reason",m:"原因，理由",c:"骨",e:"Here are the reasons.",ec:"原因如下。",f:17},
+{w:"result",m:"结果",c:"骨",e:"As a result, my favorite job is being a teacher.",ec:"因此，我最喜欢的工作是当老师。",f:12},
+{w:"addition",m:"增加（in addition 此外）",c:"骨",e:"In addition, being a teacher is very meaningful.",ec:"此外，当老师很有意义。",f:20},
+{w:"opinion",m:"观点，看法",c:"骨",e:"In my opinion, we must save water.",ec:"我认为，我们必须节约用水。",f:2},
+{w:"conclusion",m:"结论，总之",c:"骨",e:"In conclusion, traveling is a wonderful way to expand my knowledge.",ec:"总之，旅行是扩展知识的好方式。",f:2},
+{w:"concerned",m:"有关的（就我而言）",c:"骨",e:"As far as I am concerned, e-books are better than paper books.",ec:"就我而言，电子书比纸质书更好。",f:8},
+{w:"way",m:"方式；方面",c:"骨",e:"Book is good for us in many ways.",ec:"书在很多方面对我们有好处。",f:13},
+{w:"life",m:"生活；生命",c:"骨",e:"Working is very important in our lives.",ec:"工作在生活中非常重要。",f:18},
+{w:"people",m:"人们",c:"骨",e:"Some people like e-books, some people like paper books.",ec:"有人喜欢电子书，有人喜欢纸质书。",f:22},
+{w:"world",m:"世界",c:"骨",e:"Being a teacher gets me to know the world.",ec:"当老师让我了解世界。",f:10},
+{w:"everyone",m:"每个人",c:"骨",e:"Everyone wants to live healthy in the world.",ec:"世上每个人都想健康地生活。",f:5},
+{w:"should",m:"应该",c:"骨",e:"People should choose e-books to reduce resource waste.",ec:"人们应该选择电子书来减少资源浪费。",f:19},
+{w:"necessary",m:"必要的",c:"骨",e:"Playing football is important, helpful and absolutely necessary.",ec:"踢足球是重要、有益且绝对必要的。",f:7},
+{w:"helpful",m:"有帮助的",c:"骨",e:"Playing football is important, helpful and absolutely necessary.",ec:"踢足球是重要、有益且绝对必要的。",f:6},
+{w:"good",m:"好的",c:"骨",e:"Book is good for us in many ways.",ec:"书在很多方面对我们有好处。",f:18},
+{w:"hardly",m:"几乎不",c:"骨",e:"We can hardly live without work.",ec:"没有工作我们几乎无法生活。",f:1},
+{w:"mean",m:"意味着",c:"骨",e:"Healthy life means a balanced diet, exercise and a sound sleep.",ec:"健康的生活意味着均衡饮食、运动和好睡眠。",f:5},
+{w:"believe",m:"相信，认为",c:"骨",e:"I firmly believe that the Internet is an essential tool.",ec:"我坚信互联网是必不可少的工具。",f:3},
+
+{w:"help",m:"帮助",c:"动",e:"Playing football can help me build up my body.",ec:"踢足球能帮我强健身体。",f:22},
+{w:"make",m:"使；让；做",c:"动",e:"Playing football can make me happy.",ec:"踢足球能让我快乐。",f:20},
+{w:"save",m:"节省；拯救",c:"动",e:"E-books can save money for me.",ec:"电子书可以帮我省钱。",f:15},
+{w:"reduce",m:"减少",c:"动",e:"People should choose e-books to reduce resource waste.",ec:"人们应选电子书以减少资源浪费。",f:9},
+{w:"spend",m:"花费（时间/钱）",c:"动",e:"I can spend more time with my family and friends.",ec:"我能花更多时间陪家人朋友。",f:7},
+{w:"enjoy",m:"享受，喜爱",c:"动",e:"I can enjoy much more freedom.",ec:"我可以享受更多自由。",f:8},
+{w:"improve",m:"提高，改善",c:"动",e:"My main goal is to improve my English proficiency.",ec:"我的主要目标是提高英语水平。",f:3},
+{w:"choose",m:"选择",c:"动",e:"People should choose e-books to reduce pollution.",ec:"人们应该选择电子书以减少污染。",f:3},
+{w:"prefer",m:"更喜欢",c:"动",e:"As for me, I prefer e-books to paper books.",ec:"对我来说，比起纸质书我更喜欢电子书。",f:2},
+{w:"like",m:"喜欢",c:"动",e:"Some people like watching movies at home.",ec:"有些人喜欢在家看电影。",f:25},
+{w:"live",m:"生活；居住",c:"动",e:"We can hardly live without work.",ec:"没有工作我们几乎无法生活。",f:23},
+{w:"work",m:"工作",c:"动",e:"Working is very important in our lives.",ec:"工作在生活中非常重要。",f:6},
+{w:"play",m:"玩；踢（球）",c:"动",e:"After dinner we will sing, dance and play games.",ec:"晚饭后我们唱歌、跳舞、玩游戏。",f:26},
+{w:"watch",m:"观看",c:"动",e:"If I watch movies at home, I am free to do many other things.",ec:"如果在家看电影，我还能自由做别的事。",f:11},
+{w:"read",m:"阅读",c:"动",e:"After dinner, I read newspapers to them.",ec:"晚饭后我读报纸给他们听。",f:4},
+{w:"write",m:"写",c:"动",e:"I'm writing to tell you some travel advice.",ec:"我写信告诉你一些旅行建议。",f:2},
+{w:"tell",m:"告诉",c:"动",e:"I'm writing to tell you about a traditional Chinese festival.",ec:"我写信告诉你一个中国传统节日。",f:6},
+{w:"visit",m:"参观；拜访",c:"动",e:"You can spend two or three days visiting the sights.",ec:"你可以花两三天参观景点。",f:7},
+{w:"take",m:"拿；花费",c:"动",e:"You should take care of your belongings.",ec:"你应该保管好随身物品。",f:4},
+{w:"bring",m:"带来",c:"动",e:"I brought them some fruits and flowers.",ec:"我给他们带了水果和鲜花。",f:4},
+{w:"get",m:"得到；到达",c:"动",e:"I never stay up and always get up on time.",ec:"我从不熬夜，总是按时起床。",f:4},
+{w:"meet",m:"遇见；见面",c:"动",e:"We can meet a lot of friends during the festival.",ec:"节日期间我们能见到很多朋友。",f:6},
+{w:"join",m:"加入；参加",c:"动",e:"I am writing this email to invite you to join Lucy's birthday party.",ec:"我写邮件邀请你参加露西的生日聚会。",f:2},
+{w:"invite",m:"邀请",c:"动",e:"I am writing this email to invite you to join the party.",ec:"我写这封邮件邀请你参加聚会。",f:1},
+{w:"develop",m:"培养；养成",c:"动",e:"We should develop the habit of turning off lights.",ec:"我们应养成关灯的习惯。",f:3},
+{w:"protect",m:"保护",c:"动",e:"This can help protect the water resources.",ec:"这有助于保护水资源。",f:3},
+{w:"plant",m:"种植",c:"动",e:"We should plant more trees.",ec:"我们应该种更多的树。",f:3},
+{w:"provide",m:"提供",c:"动",e:"Online shopping provides significant convenience and variety.",ec:"网购提供了极大的便利和丰富选择。",f:2},
+{w:"offer",m:"提供",c:"动",e:"Online retailers often offer better deals and discounts.",ec:"网上零售商常提供更优惠的价格和折扣。",f:6},
+{w:"ensure",m:"确保",c:"动",e:"Spending pocket money on necessities ensures that I have what I need.",ec:"把零花钱花在必需品上能确保我有所需。",f:3},
+{w:"achieve",m:"实现，达到",c:"动",e:"To achieve this goal, I plan to take several steps.",ec:"为实现这个目标，我计划分几步走。",f:1},
+{w:"practice",m:"练习",c:"动",e:"I intend to practice speaking English daily.",ec:"我打算每天练习说英语。",f:1},
+{w:"remember",m:"记得，记住",c:"动",e:"You should remember 30 Chinese words every day.",ec:"你应每天记 30 个中文词。",f:2},
+{w:"listen",m:"听",c:"动",e:"You should listen to Chinese radio programs.",ec:"你应该听中文广播节目。",f:2},
+{w:"share",m:"分享",c:"动",e:"I will raise awareness by sharing factual information.",ec:"我会通过分享真实信息来提高意识。",f:1},
+{w:"contribute",m:"贡献",c:"动",e:"I can contribute to creating smoke-free public spaces.",ec:"我能为创建无烟公共空间出力。",f:3},
+{w:"encounter",m:"遇到",c:"动",e:"When I visit new places, I encounter diverse cultures.",ec:"到新地方时我会遇到多元文化。",f:3},
+{w:"build",m:"增强；建造",c:"动",e:"Playing football can help me build up my body.",ec:"踢足球能帮我强健身体。",f:4},
+{w:"relax",m:"放松",c:"动",e:"Playing football can help me relax and reduce my pressure.",ec:"踢足球能帮我放松、减轻压力。",f:5},
+{w:"release",m:"释放",c:"动",e:"Playing football can help me relax and release my pressure.",ec:"踢足球能帮我放松、释放压力。",f:5},
+{w:"enrich",m:"丰富",c:"动",e:"It enriches my social life.",ec:"它丰富了我的社交生活。",f:11},
+{w:"realize",m:"实现；意识到",c:"动",e:"It helps me realize my self-worth.",ec:"它帮我实现自我价值。",f:3},
+{w:"wish",m:"祝愿；希望",c:"动",e:"I wish you and your family good health and happiness.",ec:"祝你和家人健康幸福。",f:7},
+{w:"hope",m:"希望",c:"动",e:"I really hope you can come.",ec:"我真的希望你能来。",f:2},
+{w:"stay",m:"保持；停留",c:"动",e:"I never stay up and always get up on time.",ec:"我从不熬夜，总是按时起床。",f:2},
+{w:"lead",m:"导致",c:"动",e:"Haze can lead to serious diseases including lung cancer.",ec:"雾霾会导致包括肺癌在内的严重疾病。",f:3},
+{w:"cause",m:"造成，引起",c:"动",e:"Secondhand smoke can cause serious health problems.",ec:"二手烟会导致严重的健康问题。",f:1},
+{w:"manage",m:"管理，支配",c:"动",e:"Managing pocket money is crucial in our lives.",ec:"管理零花钱在生活中很关键。",f:2},
+{w:"focus",m:"专注于",c:"动",e:"I will focus on excelling in my studies.",ec:"我会专注把学习搞好。",f:1},
+{w:"travel",m:"旅行",c:"动",e:"Traveling is a wonderful way to explore the world.",ec:"旅行是探索世界的好方式。",f:12},
+{w:"study",m:"学习",c:"动",e:"The Internet helps me access information for my studies.",ec:"互联网帮我获取学习资料。",f:1},
+{w:"learn",m:"学习",c:"动",e:"I heard that you want to learn Chinese.",ec:"听说你想学中文。",f:3},
+{w:"teach",m:"教",c:"动",e:"It makes me happy and teaches me many new things.",ec:"它让我快乐，还教会我很多新东西。",f:4},
+{w:"use",m:"使用",c:"动",e:"I use the Internet mainly for studying.",ec:"我用互联网主要是为了学习。",f:7},
+{w:"buy",m:"购买",c:"动",e:"Consumers can now buy a wide range of products.",ec:"消费者现在能买到各种各样的商品。",f:2},
+{w:"smoke",m:"吸烟",c:"动",e:"Smoking in public places poses significant health risks.",ec:"在公共场所吸烟带来重大健康风险。",f:6},
+{w:"cook",m:"做饭，烹饪",c:"动",e:"I helped them cook dinner.",ec:"我帮他们做晚饭。",f:2},
+{w:"expand",m:"扩展，扩大",c:"动",e:"Traveling is a wonderful way to expand my knowledge.",ec:"旅行是增长见识的好方式。",f:1},
+
+{w:"family",m:"家人，家庭",c:"名",e:"I can spend more time with my family and friends.",ec:"我能有更多时间陪家人和朋友。",f:10},
+{w:"friends",m:"朋友",c:"名",e:"I can make friends when playing football.",ec:"踢足球时我能交到朋友。",f:14},
+{w:"health",m:"健康",c:"名",e:"I wish you and your family good health and happiness.",ec:"祝你和家人健康幸福。",f:9},
+{w:"water",m:"水",c:"名",e:"Human, animals and plants need water to live.",ec:"人、动物和植物的生存都需要水。",f:11},
+{w:"money",m:"钱",c:"名",e:"E-books can save money for me.",ec:"电子书能帮我省钱。",f:10},
+{w:"holiday",m:"假期",c:"名",e:"The summer holiday was an unforgettable experience.",ec:"那个暑假是一次难忘的经历。",f:11},
+{w:"job",m:"工作，职业",c:"名",e:"My favorite job is being a teacher.",ec:"我最喜欢的职业是当老师。",f:5},
+{w:"teacher",m:"老师",c:"名",e:"My favorite job is being a teacher.",ec:"我最喜欢的职业是当老师。",f:7},
+{w:"hobby",m:"爱好",c:"名",e:"My hobby is playing football.",ec:"我的爱好是踢足球。",f:4},
+{w:"football",m:"足球",c:"名",e:"As for me, I like playing football best.",ec:"至于我，我最喜欢踢足球。",f:20},
+{w:"sports",m:"运动",c:"名",e:"Playing sports is very important in our lives.",ec:"运动在生活中非常重要。",f:10},
+{w:"exercise",m:"锻炼",c:"名",e:"Doing exercise is good for us in many ways.",ec:"锻炼在很多方面对我们有益。",f:6},
+{w:"body",m:"身体",c:"名",e:"Playing football can help me build up my body.",ec:"踢足球能帮我强健身体。",f:6},
+{w:"pressure",m:"压力",c:"名",e:"It can help me relax and reduce my pressure.",ec:"它能帮我放松、减轻压力。",f:6},
+{w:"books",m:"书",c:"名",e:"Some people like paper books.",ec:"有些人喜欢纸质书。",f:13},
+{w:"movies",m:"电影",c:"名",e:"Some people like watching movies at home.",ec:"有些人喜欢在家看电影。",f:11},
+{w:"home",m:"家",c:"名",e:"I can enjoy much more freedom at home.",ec:"在家我能享受更多自由。",f:9},
+{w:"cinema",m:"电影院",c:"名",e:"Some people like watching movies in the cinema.",ec:"有些人喜欢在电影院看电影。",f:2},
+{w:"environment",m:"环境",c:"名",e:"E-books are good for the environment.",ec:"电子书对环境有好处。",f:6},
+{w:"pollution",m:"污染",c:"名",e:"It can reduce resource waste and environmental pollution.",ec:"它能减少资源浪费和环境污染。",f:3},
+{w:"resources",m:"资源",c:"名",e:"We should choose public transport to reduce resource waste.",ec:"我们应乘公共交通以减少资源浪费。",f:4},
+{w:"government",m:"政府",c:"名",e:"The government should shut down heavy polluting factories.",ec:"政府应关闭重污染工厂。",f:3},
+{w:"traffic",m:"交通",c:"名",e:"Haze may lead to traffic accidents.",ec:"雾霾可能导致交通事故。",f:2},
+{w:"air",m:"空气",c:"名",e:"Trees can help clean the air.",ec:"树木能帮助净化空气。",f:4},
+{w:"trees",m:"树",c:"名",e:"We should plant more trees.",ec:"我们应该种更多的树。",f:5},
+{w:"spring",m:"春天",c:"名",e:"Spring is coming.",ec:"春天来了。",f:8},
+{w:"summer",m:"夏天",c:"名",e:"As the summer holiday approaches, many students plan to travel.",ec:"暑假临近，很多学生计划去旅行。",f:9},
+{w:"autumn",m:"秋天",c:"名",e:"My favorite season is autumn.",ec:"我最喜欢的季节是秋天。",f:4},
+{w:"season",m:"季节",c:"名",e:"It is a beautiful and comfortable season.",ec:"这是个美丽舒适的季节。",f:5},
+{w:"trip",m:"旅行",c:"名",e:"My dream trip is to Beijing.",ec:"我的梦想之旅是去北京。",f:7},
+{w:"places",m:"地方",c:"名",e:"Beijing has many famous places of interest.",ec:"北京有很多名胜古迹。",f:8},
+{w:"hometown",m:"家乡",c:"名",e:"I heard that you will visit my hometown recently.",ec:"听说你最近要来我家乡。",f:2},
+{w:"festival",m:"节日",c:"名",e:"Let me tell you about a traditional Chinese festival.",ec:"让我给你介绍一个中国传统节日。",f:5},
+{w:"year",m:"年",c:"名",e:"The Chinese New Year lasts for 15 days.",ec:"春节持续十五天。",f:10},
+{w:"party",m:"聚会",c:"名",e:"I am writing to invite you to join Lucy's birthday party.",ec:"我写信邀请你参加露西的生日聚会。",f:4},
+{w:"dinner",m:"晚餐",c:"名",e:"We will have a great dinner together.",ec:"我们会一起吃一顿丰盛的晚餐。",f:5},
+{w:"games",m:"游戏",c:"名",e:"After dinner we will sing, dance and play games.",ec:"晚饭后我们唱歌跳舞玩游戏。",f:4},
+{w:"career",m:"职业，事业",c:"名",e:"Choosing the right career is a pivotal decision.",ec:"选对职业是关键性的决定。",f:5},
+{w:"plan",m:"计划",c:"名",e:"My career plan includes obtaining a degree.",ec:"我的职业规划包括取得学位。",f:4},
+{w:"goal",m:"目标",c:"名",e:"My main goal is to improve my English proficiency.",ec:"我的主要目标是提高英语水平。",f:4},
+{w:"skills",m:"技能",c:"名",e:"Enhancing my English skills will open up more opportunities.",ec:"提升英语技能会带来更多机会。",f:5},
+{w:"internet",m:"互联网",c:"名",e:"I use the Internet mainly for studying.",ec:"我用互联网主要是为了学习。",f:6},
+{w:"shopping",m:"购物",c:"名",e:"Online shopping has revolutionized the way we purchase goods.",ec:"网购改变了我们购物的方式。",f:5},
+{w:"electricity",m:"电",c:"名",e:"The demand for electricity has increased.",ec:"电力需求已经增长。",f:3},
+{w:"journey",m:"旅程",c:"名",e:"A secure journey ensures a pleasant experience.",ec:"安全的旅程确保愉快的体验。",f:3},
+{w:"safety",m:"安全",c:"名",e:"Safety must be our top priority.",ec:"安全必须是我们的首要任务。",f:2},
+{w:"students",m:"学生",c:"名",e:"Many students are considering travelling.",ec:"很多学生正在考虑去旅行。",f:4},
+{w:"knowledge",m:"知识",c:"名",e:"It means you have enough knowledge about the sport.",ec:"这意味着你对这项运动有足够知识。",f:2},
+{w:"information",m:"信息",c:"名",e:"The Internet helps me access information and resources.",ec:"互联网帮我获取信息和资源。",f:3},
+{w:"experience",m:"经历；体验",c:"名",e:"The summer holiday was an unforgettable experience.",ec:"那个暑假是一次难忘的经历。",f:5},
+{w:"habit",m:"习惯",c:"名",e:"We should develop the habit of turning off lights.",ec:"我们应该养成关灯的习惯。",f:3},
+{w:"diet",m:"饮食",c:"名",e:"Healthy life means a balanced diet and a sound sleep.",ec:"健康生活意味着均衡饮食和良好睡眠。",f:2},
+{w:"trouble",m:"麻烦",c:"名",e:"E-books are convenient to carry, which can save a lot of trouble.",ec:"电子书携带方便，省去很多麻烦。",f:3},
+{w:"future",m:"未来",c:"名",e:"It prepares me better for future challenges.",ec:"它让我更好地迎接未来的挑战。",f:4},
+{w:"time",m:"时间",c:"名",e:"I can spend more time with my family.",ec:"我能有更多时间陪伴家人。",f:7},
+{w:"opportunities",m:"机会",c:"名",e:"It will open up more opportunities for me.",ec:"这会为我打开更多机会。",f:2},
+{w:"progress",m:"进步",c:"名",e:"I am confident that I will make significant progress.",ec:"我有信心取得显著进步。",f:1},
+{w:"advice",m:"建议",c:"名",e:"I'm writing to tell you some travel advice.",ec:"我写信告诉你一些旅行建议。",f:2},
+{w:"transport",m:"交通工具",c:"名",e:"You should use official transport.",ec:"你应该乘坐正规的交通工具。",f:2},
+{w:"things",m:"事情，东西",c:"名",e:"Here are the things we should do.",ec:"以下是我们应该做的事。",f:8},
+
+{w:"healthy",m:"健康的",c:"形",e:"Everyone wants to live healthy in the world.",ec:"世上每个人都想健康地生活。",f:10},
+{w:"happy",m:"快乐的",c:"形",e:"Playing football can make me happy.",ec:"踢足球能让我快乐。",f:9},
+{w:"favorite",m:"最喜欢的",c:"形",e:"My favorite job is being a teacher.",ec:"我最喜欢的职业是当老师。",f:9},
+{w:"social",m:"社交的",c:"形",e:"It enriches my social life.",ec:"它丰富了我的社交生活。",f:10},
+{w:"new",m:"新的",c:"形",e:"It teaches me many new things.",ec:"它教会我很多新东西。",f:14},
+{w:"expensive",m:"昂贵的",c:"形",e:"E-books can save money, because paper books are expensive.",ec:"电子书能省钱，因为纸质书很贵。",f:3},
+{w:"convenient",m:"方便的",c:"形",e:"E-books are very convenient to carry with.",ec:"电子书携带非常方便。",f:2},
+{w:"comfortable",m:"舒适的",c:"形",e:"You can bring some light and comfortable clothes.",ec:"你可以带些轻薄舒适的衣服。",f:4},
+{w:"delicious",m:"美味的",c:"形",e:"I can enjoy many kinds of delicious foods.",ec:"我能品尝多种美食。",f:4},
+{w:"friendly",m:"友好的",c:"形",e:"The local people are very friendly and kind.",ec:"当地人非常友好善良。",f:2},
+{w:"unforgettable",m:"难忘的",c:"形",e:"The summer holiday was an unforgettable experience.",ec:"那个暑假是一次难忘的经历。",f:4},
+{w:"beautiful",m:"美丽的",c:"形",e:"It is a beautiful and comfortable season.",ec:"这是个美丽又舒适的季节。",f:1},
+{w:"popular",m:"受欢迎的",c:"形",e:"Watching movies is very popular and trendy.",ec:"看电影非常流行时髦。",f:3},
+{w:"serious",m:"严重的",c:"形",e:"Haze can lead to serious diseases.",ec:"雾霾会导致严重的疾病。",f:3},
+{w:"clean",m:"干净的",c:"形",e:"Trees can help clean the air.",ec:"树木能帮助净化空气。",f:2},
+{w:"safe",m:"安全的",c:"形",e:"You should use official transport, it is safe.",ec:"你应该乘坐正规交通工具，那很安全。",f:3},
+{w:"free",m:"自由的",c:"形",e:"I am free to do many other things at the same time.",ec:"我可以同时自由地做很多别的事。",f:4},
+{w:"local",m:"当地的",c:"形",e:"The local people are very friendly.",ec:"当地人非常友好。",f:3},
+{w:"ancient",m:"古代的",c:"形",e:"In ancient times, there was a monster named Nian.",ec:"古时候有一只叫“年”的怪兽。",f:2},
+{w:"traditional",m:"传统的",c:"形",e:"Let me tell you about a traditional Chinese festival.",ec:"让我介绍一个中国传统节日。",f:1},
+{w:"main",m:"主要的",c:"形",e:"My main goal is to improve my English.",ec:"我的主要目标是提高英语。",f:2},
+{w:"daily",m:"日常的",c:"形",e:"I choose to ride a bike in my daily life.",ec:"我日常选择骑自行车。",f:4},
+{w:"public",m:"公共的",c:"形",e:"We should choose public transportation.",ec:"我们应选择公共交通。",f:5},
+{w:"green",m:"绿色的；环保的",c:"形",e:"Green transportation is very popular and trendy.",ec:"绿色出行非常流行。",f:3},
+{w:"essential",m:"必不可少的",c:"形",e:"The Internet is an essential tool.",ec:"互联网是必不可少的工具。",f:4},
+{w:"vital",m:"至关重要的",c:"形",e:"Spending pocket money wisely is vital.",ec:"明智地花零花钱至关重要。",f:2},
+{w:"significant",m:"重大的，显著的",c:"形",e:"I will make significant progress.",ec:"我会取得显著进步。",f:5},
+{w:"wonderful",m:"极好的",c:"形",e:"Traveling is a wonderful way to explore the world.",ec:"旅行是探索世界的绝妙方式。",f:2},
+{w:"responsible",m:"负责任的",c:"形",e:"As a responsible citizen, I can contribute.",ec:"作为负责任的公民，我可以出力。",f:1},
+{w:"strong",m:"强壮的",c:"形",e:"Riding bikes makes me strong.",ec:"骑自行车让我更强壮。",f:2},
+{w:"kind",m:"友善的",c:"形",e:"The local people are very friendly and kind.",ec:"当地人非常友善。",f:6},
+
+{w:"first",m:"首先（first of all）",c:"连",e:"First of all, being a teacher gets me to know the world.",ec:"首先，当老师让我了解世界。",f:22},
+{w:"last",m:"最后（last but not least）",c:"连",e:"Last but not least, I can spend more time with my family.",ec:"最后但同样重要的是，我能多陪家人。",f:24},
+{w:"also",m:"也",c:"连",e:"It is also harmful to the environment.",ec:"它对环境也有害。",f:10},
+{w:"because",m:"因为",c:"连",e:"E-books can save money, because paper books are expensive.",ec:"电子书能省钱，因为纸质书很贵。",f:4},
+{w:"while",m:"虽然；而",c:"连",e:"While online shopping provides convenience, consumers should be careful.",ec:"虽然网购提供便利，消费者仍需谨慎。",f:1},
+{w:"moreover",m:"此外，而且",c:"连",e:"Moreover, online retailers often offer better deals.",ec:"此外，网上零售商常提供更优惠的价格。",f:3},
+{w:"furthermore",m:"此外，而且",c:"连",e:"Furthermore, I intend to practice speaking English daily.",ec:"此外，我打算每天练英语口语。",f:2},
+{w:"additionally",m:"此外",c:"连",e:"Additionally, I intend to practice speaking English daily.",ec:"此外，我打算每天练口语。",f:1},
+{w:"when",m:"当……的时候",c:"连",e:"I can make friends when playing football.",ec:"踢足球时我能交到朋友。",f:7},
+{w:"during",m:"在……期间",c:"连",e:"During the festival, family members will get together.",ec:"节日期间，家人会团聚。",f:8},
+{w:"through",m:"通过",c:"连",e:"I practice speaking English through various platforms.",ec:"我通过各种平台练习口语。",f:5},
+{w:"only",m:"只（not only...but also）",c:"连",e:"It not only makes me happy but also prepares me for the future.",ec:"它不仅让我快乐，还让我为未来做准备。",f:2},
+{w:"together",m:"一起",c:"连",e:"We can work together to create healthier public spaces.",ec:"我们可以携手创造更健康的公共空间。",f:4},
+{w:"really",m:"真正地，确实",c:"连",e:"Fighting against haze is really important.",ec:"治理雾霾确实很重要。",f:2},
+{w:"never",m:"从不",c:"连",e:"I never stay up and always get up on time.",ec:"我从不熬夜，总是按时起床。",f:1},
+{w:"always",m:"总是",c:"连",e:"I always get up on time.",ec:"我总是按时起床。",f:2},
+{w:"overall",m:"总的来说",c:"连",e:"Overall, online shopping provides significant convenience.",ec:"总的来说，网购提供了极大便利。",f:2},
+{w:"very",m:"非常",c:"连",e:"Working is very important in our lives.",ec:"工作在生活中非常重要。",f:22},
+{w:"more",m:"更；更多",c:"连",e:"I can spend more time with my family.",ec:"我能花更多时间陪家人。",f:12}
+];
+
+/* ========== 万能句型 ========== */
+const SENTS=[
+{e:"It is well known that ___ is very important in our lives.",c:"众所周知，……在我们的生活中非常重要。",t:"开头句，30 篇里有 20+ 篇用这句"},
+{e:"As a matter of fact, ___ is good for us in many ways.",c:"事实上，……在很多方面对我们有好处。",t:"开头第二句"},
+{e:"As for me, my favorite ___ is ___.",c:"对我来说，我最喜欢的……是……",t:"亮明观点句"},
+{e:"Some people like A, some people like B.",c:"有人喜欢 A，有人喜欢 B。",t:"对比引入，凑字数神器"},
+{e:"As for me, I prefer A to B.",c:"对我来说，比起 B 我更喜欢 A。",t:"表达偏好"},
+{e:"Here are the reasons.",c:"原因如下。",t:"承上启下过渡句"},
+{e:"First of all, ...",c:"首先，……",t:"理由一"},
+{e:"In addition, ...",c:"此外，……",t:"理由二"},
+{e:"Last but not least, ...",c:"最后但同样重要的是，……",t:"理由三"},
+{e:"As a result, as far as I am concerned, ...",c:"因此，就我而言，……",t:"结尾总结句"},
+{e:"In my opinion, we should / must ...",c:"我认为，我们应该/必须……",t:"提建议"},
+{e:"It is necessary / important to do sth.",c:"做某事是必要/重要的。",t:"万能评价句"},
+{e:"I am writing to tell you ...",c:"我写信是想告诉你……",t:"书信开头（邮件类真题必用）"},
+{e:"I am looking forward to your early reply.",c:"期待你的早日回复。",t:"书信结尾"},
+{e:"I wish you good health and happiness.",c:"祝你健康幸福。",t:"书信祝福语"},
+{e:"It not only ... but also ...",c:"它不仅……而且……",t:"加分句型"},
+{e:"In conclusion, ...",c:"总之，……",t:"结尾句"}
+];
+
+/* ========== 状态 ========== */
+const KEY='zkzw_v1';
+let S={box:{},wrong:{},seen:{}};
+try{const r=localStorage.getItem(KEY); if(r) S=Object.assign(S,JSON.parse(r));}catch(e){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+const box=w=>S.box[w]||0;
+const mastered=w=>box(w)>=3;
+function upd(w,ok){ if(ok){S.box[w]=Math.min(5,(S.box[w]||0)+1); S.seen[w]=1; delete S.wrong[w];}
+  else{S.box[w]=1; S.seen[w]=1; S.wrong[w]=(S.wrong[w]||0)+1;} save(); paint();}
+const CNAME={骨:'万能骨架词',动:'高频动词',名:'主题名词',形:'形容词',连:'连接/逻辑词'};
+function paint(){
+  const all=WORDS.length, m=WORDS.filter(x=>mastered(x.w)).length;
+  document.getElementById('hpM').textContent=m;
+  document.getElementById('hpAll').textContent=all;
+  document.getElementById('hpPct').textContent=Math.round(m/all*100)+'%';
+}
+
+/* ========== 发音 ========== */
+let VOICE=null;
+function pickVoice(){ if(!window.speechSynthesis) return;
+  const vs=speechSynthesis.getVoices(); if(!vs.length) return;
+  VOICE=vs.find(v=>/en-US/i.test(v.lang)&&/female|samantha|zira|google/i.test(v.name))||vs.find(v=>/^en/i.test(v.lang))||vs[0];}
+if(window.speechSynthesis){pickVoice(); speechSynthesis.onvoiceschanged=pickVoice;}
+function speak(t){
+  try{
+    if(!window.speechSynthesis||!window.SpeechSynthesisUtterance)return;
+    speechSynthesis.cancel();
+    const u=new SpeechSynthesisUtterance(t); u.lang='en-US'; if(VOICE)u.voice=VOICE; u.rate=.85;
+    speechSynthesis.speak(u);
+  }catch(e){}
+}
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('on');clearTimeout(t._);t._=setTimeout(()=>t.classList.remove('on'),1600);}
+
+/* ========== 导航 ========== */
+function go(p){
+  document.querySelectorAll('.panel').forEach(x=>x.classList.remove('on'));
+  document.getElementById('p-'+p).classList.add('on');
+  document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('on',b.dataset.go===p));
+  if(p==='list')renderList(); if(p==='stat')renderStat();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>go(b.dataset.go));
+
+/* ========== 学习卡 ========== */
+let pool=[],ci=0,cur=null,flipped=false;
+let catFilter='all',scope='unlearned';
+function buildPool(){
+  let a=WORDS.filter(w=>catFilter==='all'||w.c===catFilter);
+  if(scope==='wrong') a=a.filter(w=>S.wrong[w.w]);
+  else if(scope==='unlearned'){
+    const un=a.filter(w=>!mastered(w.w)), wr=a.filter(w=>S.wrong[w.w]);
+    const rest=un.filter(w=>!S.wrong[w.w]);
+    a=wr.concat(rest, a.filter(w=>mastered(w.w)));
+  }
+  pool=a; ci=0;
+  if(!pool.length){toast('这个范围暂时没有单词');}
+  showCard();
+}
+function showCard(){
+  flipped=false; document.getElementById('flip').classList.remove('on');
+  if(!pool.length){cur=null;document.getElementById('fW').textContent='（无）';return;}
+  cur=pool[ci];
+  document.getElementById('fIdx').textContent=(ci+1)+' / '+pool.length;
+  document.getElementById('bIdx').textContent=(ci+1)+' / '+pool.length;
+  document.getElementById('fW').textContent=cur.w;
+  document.getElementById('bW').textContent=cur.w;
+  document.getElementById('fC').textContent=(cur.f>=8?'★核心 ':'')+CNAME[cur.c];
+  document.getElementById('fF').textContent='真题范文出现 '+cur.f+' 次';
+  document.getElementById('bM').textContent=cur.m;
+  document.getElementById('bE').textContent=cur.e;
+  document.getElementById('bEc').textContent=cur.ec;
+  document.getElementById('bF').textContent='已答对 '+box(cur.w)+' 次'+(S.wrong[cur.w]?' · 错过 '+S.wrong[cur.w]+' 次':'');
+  document.getElementById('learnTip').textContent='当前范围：'+pool.length+' 词。标记「认识了」直接升 1 级；标记「不认识」会进入错词本，练习时会反复出现。';
+}
+function flipIt(){ if(!cur)return; flipped=!flipped; document.getElementById('flip').classList.toggle('on',flipped); }
+document.getElementById('flip').onclick=flipIt;
+function nextCard(){ if(ci<pool.length-1){ci++;showCard();}else{toast('已经是最后一个了，可切换范围继续');} }
+function prevCard(){ if(ci>0){ci--;showCard();} }
+function mark(ok){ if(!cur)return; upd(cur.w,ok); toast(ok?'★ '+cur.w+' 升级':'已加入错词本'); if(ci<pool.length-1){ci++;showCard();} else buildPool(); }
+document.querySelectorAll('[data-cat]').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('[data-cat]').forEach(x=>x.classList.remove('on'));b.classList.add('on');
+  catFilter=b.dataset.cat; buildPool();});
+document.querySelectorAll('[data-scope]').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('[data-scope]').forEach(x=>x.classList.remove('on'));b.classList.add('on');
+  scope=b.dataset.scope; buildPool();});
+
+/* ========== 练习 ========== */
+let qm='mix',qn=20,qs=[],qi=0,qRight=0,qWrong=0,qLocked=false,qCur=null;
+document.querySelectorAll('[data-qm]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-qm]').forEach(x=>x.classList.remove('on'));b.classList.add('on');qm=b.dataset.qm;});
+document.querySelectorAll('[data-qn]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-qn]').forEach(x=>x.classList.remove('on'));b.classList.add('on');qn=+b.dataset.qn;});
+
+function pick(){ // 越不熟越容易被抽到
+  const cands=WORDS.map(w=>({w,w8:6-box(w.w)+(S.wrong[w.w]?3:0)}));
+  let tot=cands.reduce((s,x)=>s+x.w8,0),r=Math.random()*tot;
+  for(const x of cands){r-=x.w8; if(r<=0)return x.w;}
+  return WORDS[0];
+}
+function startQuiz(){
+  const N=qn||Math.min(WORDS.length,40);
+  qs=[]; for(let i=0;i<N;i++) qs.push(pick());
+  qi=0;qRight=0;qWrong=0;
+  document.getElementById('setup').style.display='none';
+  document.getElementById('qEnd').style.display='none';
+  document.getElementById('qbox').style.display='block';
+  renderQ();
+}
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function options(w,n,useM){
+  const others=shuffle(WORDS.filter(x=>x.w!==w.w)).slice(0,n-1);
+  return shuffle(others.concat([w]).map(x=>useM?x.m:x.w));
+}
+function renderQ(){
+  qLocked=false;qCur=qs[qi];
+  const q=qCur;
+  let mode=qm; if(mode==='mix') mode=['e2c','c2e','fill','dict'][Math.floor(Math.random()*4)];
+  q._mode=mode;
+  document.getElementById('qMode').textContent={e2c:'看英文选中文',c2e:'看中文选英文',fill:'例句填空',dict:'听音写词'}[mode];
+  document.getElementById('qIdx').textContent=(qi+1)+' / '+qs.length;
+  document.getElementById('qBar').style.width=(qi/qs.length*100)+'%';
+  document.getElementById('qFb').className='fb';
+  document.getElementById('qFb').innerHTML='';
+  document.getElementById('qNext').style.display='none';
+  const body=document.getElementById('qBody');
+  const auto=document.getElementById('autoSpeak').checked;
+
+  if(mode==='e2c'){
+    body.innerHTML='<div class="qword">'+q.w+'</div><div class="tiny" style="text-align:center">'+CNAME[q.c]+' · 真题出现 '+q.f+' 次</div><div class="opts"></div>';
+    const box=body.querySelector('.opts');
+    options(q,4,true).forEach((t,i)=>{const b=document.createElement('button');b.className='opt';b.innerHTML='<small>'+(i+1)+'</small>'+t;b.onclick=()=>ans(t===q.m,t,b);box.appendChild(b);});
+    if(auto)speak(q.w);
+  }else if(mode==='c2e'){
+    body.innerHTML='<div class="qcn">'+q.m+'</div><div class="tiny" style="text-align:center">真题出现 '+q.f+' 次 · 选对应的英文单词</div><div class="opts"></div>';
+    const box=body.querySelector('.opts');
+    options(q,4,false).forEach((t,i)=>{const b=document.createElement('button');b.className='opt';b.innerHTML='<small>'+(i+1)+'</small>'+t;b.onclick=()=>ans(t===q.w,t,b);box.appendChild(b);});
+  }else if(mode==='fill'){
+    const blanked=q.e.replace(new RegExp('\\b'+q.w.replace(/[-]/g,'[- ]?')+'\\b','i'),'<span class="blank">?</span>');
+    body.innerHTML='<div class="ex" style="font-size:15px"><div class="en">'+(blanked.indexOf('?')>=0?blanked:q.e)+'</div><div class="cn">'+q.ec+'</div></div>'
+      +'<div class="tiny" style="margin-top:8px">提示：'+q.w[0]+' 开头，共 '+q.w.replace(/-/g,'').length+' 个字母 · '+q.m+'</div>'
+      +'<input class="txt" id="fillIn" placeholder="输入英文单词" autocomplete="off" autocapitalize="off" style="margin-top:8px">'
+      +'<div class="row" style="margin-top:10px"><button class="btn" onclick="submitFill()">提交</button><button class="btn ghost" onclick="speak(qCur.e)">🔊 听例句</button></div>';
+    const inp=document.getElementById('fillIn'); inp.onkeydown=e=>{if(e.key==='Enter')submitFill();}; setTimeout(()=>inp.focus(),60);
+    if(auto)speak(q.e);
+  }else{
+    body.innerHTML='<div style="text-align:center;padding:14px 0"><div style="font-size:44px">🔊</div><div class="muted">点击播放，写出你听到的单词</div>'
+      +'<div class="row" style="justify-content:center;margin-top:10px"><button class="btn ghost" onclick="speak(qCur.w)">再听一次</button><button class="btn gray" onclick="speak(qCur.e)">听例句</button></div></div>'
+      +'<div class="tiny" style="text-align:center">提示：'+q.w[0]+' 开头，共 '+q.w.replace(/-/g,'').length+' 个字母</div>'
+      +'<input class="txt" id="dictIn" placeholder="输入英文单词" autocomplete="off" autocapitalize="off" style="margin-top:8px">'
+      +'<div class="row" style="margin-top:10px"><button class="btn" onclick="submitDict()">提交</button><button class="btn gray" onclick="reveal()">不会，看答案</button></div>';
+    const inp=document.getElementById('dictIn'); inp.onkeydown=e=>{if(e.key==='Enter')submitDict();}; setTimeout(()=>inp.focus(),60);
+    if(auto)setTimeout(()=>speak(q.w),250);
+  }
+}
+function submitFill(){ if(qLocked)return; const v=document.getElementById('fillIn').value.trim().toLowerCase(); judge(v===qCur.w.toLowerCase(),v); }
+function submitDict(){ if(qLocked)return; const v=document.getElementById('dictIn').value.trim().toLowerCase(); judge(v===qCur.w.toLowerCase(),v); }
+function reveal(){ if(qLocked)return; judge(false,'',true); }
+function judge(ok,val,shown){
+  qLocked=true; const fb=document.getElementById('qFb');
+  upd(qCur.w,ok);
+  if(ok){qRight++; fb.className='fb ok'; fb.innerHTML='✅ 正确！<span class="kw">'+qCur.w+'</span> '+qCur.m;}
+  else{qWrong++; fb.className='fb no'; fb.innerHTML=(shown?'👀 答案是 ':'❌ 你写的是「'+(val||'空')+'」，正确答案是 ')+'<span class="kw">'+qCur.w+'</span> '+qCur.m+'<br><span style="color:#5b6b76">'+qCur.e+'</span>';}
+  speak(qCur.w);
+  document.getElementById('qNext').style.display='flex';
+  document.getElementById('qNext').firstElementChild.textContent=(qi<qs.length-1?'下一题 →':'看结果 →');
+}
+function ans(ok,val,btn){
+  if(qLocked)return; qLocked=true;
+  document.querySelectorAll('.opt').forEach(b=>{b.classList.add('dim');
+    if(b.textContent.replace(/^\d/,'')===qCur.m||b.textContent.replace(/^\d/,'')===qCur.w||b.textContent.slice(1)===qCur.m||b.textContent.slice(1)===qCur.w) b.classList.add('right');});
+  if(!ok)btn.classList.add('wrong');
+  upd(qCur.w,ok);
+  const fb=document.getElementById('qFb');
+  if(ok){qRight++;fb.className='fb ok';fb.innerHTML='✅ 正确！';}
+  else{qWrong++;fb.className='fb no';fb.innerHTML='❌ 正确答案：<span class="kw">'+qCur.w+'</span> '+qCur.m+'<br><span style="color:#5b6b76">'+qCur.e+'</span>';}
+  speak(qCur.w);
+  document.getElementById('qNext').style.display='flex';
+  document.getElementById('qNext').firstElementChild.textContent=(qi<qs.length-1?'下一题 →':'看结果 →');
+}
+function nextQ(){
+  if(qi<qs.length-1){qi++;renderQ();}
+  else{
+    document.getElementById('qbox').style.display='none';
+    document.getElementById('qEnd').style.display='block';
+    document.getElementById('eRight').textContent=qRight;
+    document.getElementById('eWrong').textContent=qWrong;
+    const acc=Math.round(qRight/(qRight+qWrong)*100);
+    document.getElementById('eAcc').textContent=(isNaN(acc)?0:acc)+'%';
+    document.getElementById('eTip').textContent=qWrong>0?('有 '+qWrong+' 题答错，已自动加入错词本，下一轮会优先再考你。建议回到「学习」页把生词过一遍。'):'全对！可以去「学习」页挑战新范围。';
+  }
+}
+
+/* ========== 词表 ========== */
+let lf='all';
+document.querySelectorAll('[data-lf]').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('[data-lf]').forEach(x=>x.classList.remove('on'));b.classList.add('on');
+  lf=b.dataset.lf; renderList();});
+function renderList(){
+  let a=WORDS.slice().sort((x,y)=>y.f-x.f);
+  if(lf==='mastered')a=a.filter(w=>mastered(w.w));
+  else if(lf==='un')a=a.filter(w=>!mastered(w.w));
+  else if(lf==='wrong')a=a.filter(w=>S.wrong[w.w]);
+  const g={};a.forEach(w=>(g[w.c]=g[w.c]||[]).push(w));
+  const names={骨:'万能骨架词',动:'高频动词',名:'主题名词',形:'形容词',连:'连接/逻辑词'};
+  let h='<div class="card">';
+  if(!a.length)h+='<div class="muted">这里还没有单词，去练习或学习吧。</div>';
+  Object.keys(names).forEach(k=>{ if(!g[k])return;
+    h+='<div class="cat-t"><span>'+names[k]+'</span><span class="tiny">'+g[k].length+' 词</span></div><div class="list">';
+    g[k].forEach(w=>{h+='<div class="item '+(mastered(w.w)?'m':(S.wrong[w.w]?'w':''))+'" onclick="speak(\''+w.w+'\')"><b>'+w.w+'</b><span>'+w.m+'</span></div>';});
+    h+='</div>';});
+  h+='</div>';
+  document.getElementById('listBox').innerHTML=h;
+}
+
+/* ========== 句型 ========== */
+(function(){
+  let h='';
+  SENTS.forEach(s=>{h+='<div class="sent"><div class="e">'+s.e+'</div><div class="c">'+s.c+'</div><div class="t">'+s.t+'　<button class="speak" onclick="speak(\''+s.e.replace(/'/g,"\\'").replace(/___/g,'something')+'\')">🔊</button></div></div>';});
+  document.getElementById('sentBox').innerHTML=h;
+})();
+
+/* ========== 统计 ========== */
+function renderStat(){
+  const all=WORDS.length;
+  const m=WORDS.filter(w=>mastered(w.w)).length;
+  const seen=WORDS.filter(w=>S.seen[w.w]).length;
+  const wr=Object.keys(S.wrong).length;
+  document.getElementById('sLearn').textContent=seen;
+  document.getElementById('sMaster').textContent=m;
+  document.getElementById('sWrong').textContent=wr;
+  document.getElementById('sNew').textContent=all-seen;
+  document.getElementById('sBar').style.width=(m/all*100)+'%';
+  const names={骨:'万能骨架词',动:'高频动词',名:'主题名词',形:'形容词',连:'连接/逻辑词'};
+  let h='<tr><th>分类</th><th class="n">总数</th><th class="n">已掌握</th><th class="n">进度</th></tr>';
+  Object.keys(names).forEach(k=>{
+    const g=WORDS.filter(w=>w.c===k), gm=g.filter(w=>mastered(w.w)).length;
+    h+='<tr><td>'+names[k]+'</td><td class="n">'+g.length+'</td><td class="n">'+gm+'</td><td class="n">'+Math.round(gm/g.length*100)+'%</td></tr>';
+  });
+  document.getElementById('catTable').innerHTML=h;
+}
+function resetBox(){ if(confirm('确定清空所有掌握进度？')){S.box={};S.seen={};save();paint();renderStat();toast('已清空进度');} }
+function resetWrong(){ if(confirm('确定清空错词本？')){S.wrong={};save();paint();renderStat();toast('已清空错词本');} }
+
+/* ========== 键盘 ========== */
+document.addEventListener('keydown',e=>{
+  if(document.getElementById('p-learn').classList.contains('on')){
+    if(e.code==='Space'){e.preventDefault();flipIt();}
+    if(e.key==='ArrowRight')nextCard();
+    if(e.key==='ArrowLeft')prevCard();
+  }
+  if(document.getElementById('p-quiz').classList.contains('on')&&!qLocked&&document.getElementById('qbox').style.display!=='none'){
+    const n=parseInt(e.key);
+    if(n>=1&&n<=4){const b=document.querySelectorAll('.opt')[n-1]; if(b)b.click();}
+    if(e.key==='Enter'){const bn=document.querySelector('#qNext .btn'); if(bn&&document.getElementById('qNext').style.display!=='none')bn.click();}
+  }
+});
+
+paint(); buildPool(); renderList(); renderStat();
+</script>
+</body>
+</html>
